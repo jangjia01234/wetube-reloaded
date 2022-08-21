@@ -6,6 +6,12 @@ html(lang="ko")
     body
         header
             h1=pageTitle
+            ul
+                    li
+                        a(href="/videos/upload") Upload Video
+                    li
+                        a(href="/") Home
+                    //- 위 두 li 확인 필요
         main
             block content
     include partials/footer
