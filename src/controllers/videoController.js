@@ -14,6 +14,7 @@ export const watch = async (req, res) => {
   }
   return res.render("watch", { pageTitle: video.title, video });
 };
+
 export const getEdit = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
@@ -22,6 +23,7 @@ export const getEdit = async (req, res) => {
   }
   return res.render("edit", { pageTitle: `Edit: ${video.title}`, video });
 };
+
 export const postEdit = async (req, res) => {
   const { id } = req.params;
   const { title, description, hashtags } = req.body;
