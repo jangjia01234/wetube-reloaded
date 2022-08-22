@@ -10,6 +10,13 @@ export const watch = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
   if (!video) {
+    const search = (req, res) => {
+      const { keyword } = req.query;
+      if (keyword) {
+        // search
+      }
+      return res.render("search", { pageTitle: "Search" });
+    };
     return res.render("404", { pageTitle: "Video not found." });
   }
   return res.render("watch", { pageTitle: video.title, video });
