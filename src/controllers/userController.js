@@ -24,6 +24,7 @@ export const postJoin = async (req, res) => {
       username,
       email,
       password,
+      // password2,
       location,
     });
     return res.redirect("/login");
@@ -47,13 +48,15 @@ export const postLogin = async (req, res) => {
       errorMessage: "An account with this username does not exists.",
     });
   }
-  const ok = await bcrypt.compare(password, user.password);
+  const ok = await bcryptjs.compare(password, user.password);
   if (!ok) {
     return res.status(400).render("login", {
       pageTitle,
       errorMessage: "Wrong password",
     });
   }
+  req.session.loggedIn = true;
+  req.session.user = user;
   return res.redirect("/");
 };
 
