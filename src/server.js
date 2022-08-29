@@ -1,5 +1,3 @@
-import "./db";
-import "./models/Video";
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
@@ -13,8 +11,10 @@ const app = express();
 const logger = morgan("dev");
 
 app.set("view engine", "pug");
-app.set("views", process.cwd() + "/src/views");
+app.set("views", process.cwd() + "/src" + "/views");
+
 app.use(logger);
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
@@ -22,15 +22,14 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
-    // 20초 뒤에 세션 만료되게 하기
-    // cookie: {
-    //   maxAge: 20000,
-    // },
-    store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URL,
+    }),
   })
 );
 
 app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
