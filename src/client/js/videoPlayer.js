@@ -30,7 +30,7 @@ const handleVolumeInput = (event) => {
     const { target: {value} } = event;
     if (video.muted) {
         video.muted = false;
-        muteBtn.innerText = "Mute";
+        muteBtn.innerText = "Mute"; 
     }
     volumeValue = value;
     video.volume = value;
