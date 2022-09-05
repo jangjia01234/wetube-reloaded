@@ -24,7 +24,9 @@ const handleStart = () => {
     startBtn.innerText = "Stop Recording";
     startBtn.removeEventListener("click", handleStart);
     startBtn.addEventListener("click", handleStop);
-    recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+    recorder = new MediaRecorder(stream, 
+      { mimeType: "video/webm" }
+      );
     recorder.ondataavailable = (event) => {
       videoFile = URL.createObjectURL(event.data);
       video.srcObject = null;
@@ -38,7 +40,7 @@ const handleStart = () => {
 const init = async () => {
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: true, //true 라고 써도 됨
+    video: true,
   });
   video.srcObject = stream;
   video.play();
