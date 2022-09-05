@@ -1,12 +1,11 @@
-extends base.pug
+extends base
 
 block content
-    block content
-        div#videoContainer(data-id=video._id)
-            video(src="/" + video.fileUrl)
-            div#videoControls.videoControls
+    div#videoContainer
+        video(src="/" + video.fileUrl)
+        div#videoControls.videoControls
             div.videoControls__play
-                span#play.videoControls__playBtn
+                span#play.videoControlsplayBtn
                     i.fas.fa-play
                 div.videoControls__time
                     span#currenTime 00:00
@@ -19,7 +18,26 @@ block content
                     i.fas.fa-volume-up
             div
                 span#fullScreen
-                    i.fas.fa-expan
+                    i.fas.fa-expand
+    div.video__data
+        p.video__title=video.title
+        small.video__owner Uploaded by 
+            a(href=`/users/${video.owner._id}`)=video.owner.name
+        small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+        if String(video.owner._id) === String(loggedInUser._id)
+            a(href=`${video.id}/edit`) Edit Video &rarr;
+            br
+            a(href=`${video.id}/delete`) Delete Video &rarr;
+    if loggedIn
+        div.video__comments
+            form.video__comment-form#commentForm
+                textarea(cols="30", rows="10", placeholder="Write a nice commment...")
+                button Add Comment
+
+block scripts
+    script(src="/static/js/videoPlayer.js")
+    if loggedIn
+        script(src="/static/js/commentSection.js") 
     
     //- video(src="/" + video.fileUrl, controls)  에러 해결하면 controls 삭제하기
     //- div
@@ -47,5 +65,3 @@ block content
                 a(href=`${video.id}/edit`) Edit Video &rarr;
                 br
                 a(href=`${video.id}/delete`) Delete Video &rarr;
-block scripts
-    script(src="/static/js/videoPlayer.js") 
