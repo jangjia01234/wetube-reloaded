@@ -16,7 +16,8 @@ const handleDownload = () => {
 const handleStop = () => {
   startBtn.innerText = "Download Recording";
   startBtn.removeEventListener("click", handleStop);
-  startBtn.addEventListener("click", handleStart);
+  startBtn.addEventListener("click", handleDownload);
+  recorder.stop();
 };
 
 const handleStart = () => {
@@ -37,7 +38,7 @@ const handleStart = () => {
 const init = async () => {
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: { width: 200, height: 350}, //true 라고 써도 됨
+    video: true, //true 라고 써도 됨
   });
   video.srcObject = stream;
   video.play();
