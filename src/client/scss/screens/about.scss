@@ -1,13 +1,16 @@
-// main {
-//     font-family: 'DungGeunMo';
-//     // div {
-//     //     // margin: 200px;
-//     // }
-//     p {
-//         text-align: center;
-//         font-size: 30px;
-//         letter-spacing: 2px;
-//         word-spacing: 5px;
-//         font-style: italic;
-//     }
-// }
+main {
+    font-family: 'DungGeunMo';
+    // div {
+    //     margin: 200px;
+    // }
+    p {
+        text-align: center;
+        font-size: 30px;
+        letter-spacing: 2px;
+        word-spacing: 5px;
+        font-style: italic;
+        background-color: black;
+        border-radius: 10px;
+        padding: 40px;
+    }
+}
