@@ -18,6 +18,9 @@ header {
       font-weight: 600;
       text-transform: uppercase;
     }
+    li:hover {
+      color: $pink;
+    }
     i {
       font-size: 16px;
     }
@@ -38,6 +41,13 @@ header {
   }
   .header__logo__img {
     width: 150px;
+  }
+  .header__logo__img:hover {
+    transform: scale(1.1);
+    transition: transform .3s;
+  }
+  .logout {
+    color: $pink; 
   }
 }
 

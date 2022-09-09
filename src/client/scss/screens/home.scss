@@ -1,2 +1,52 @@
-.video__grid {
+.main {
+    .main__uploader {
+        display: flex;
+    }
+    .uploader-profile img {
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    .uploader-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+    .uploader-info__artist {
+        // font-family: 'Black Ops One', cursive;
+        font-family: 'Stalinist One', cursive;
+        color: $pink;
+    }   
+    .uploader-info__date {
+        font-size: 12px;
+    }
+    .title-text {
+        padding: 140px;
+        font-size: 25px;
+        font-family: 'Shrikhand', cursive;
+    }
+    .title-info {
+        display: flex;
+        gap: 40px;
+        font-size: 12px;
+    }
+    .title-info__view i {
+        margin-right: 7px;
+    }
+    .title-info__comment i {
+        margin-right: 7px;
+    }
+    .main__title button {
+        margin: 50px 0;
+        -webkit-appearance: none;
+        background: transparent;
+        border: none;
+        background-color: white;
+        color: black;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+    }
 }

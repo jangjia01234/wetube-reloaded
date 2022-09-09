@@ -4,8 +4,25 @@ include mixins/video
 block content 
     div.main
         div.main__uploader 
+            div.uploader-profile
+                img(src="https://i.pinimg.com/564x/7c/8b/47/7c8b47078e2445671ea9f466c3b08b54.jpg")
+            div.uploader-info
+                div.uploader-info__artist 
+                    span NEW JEANS
+                div.uploader-info__date
+                    span 29 August 2022
         div.main__title
-        div.main__upload__info
+            div.title-text 
+                //- span HYPE BOY 
+                img(src="/src/client/scss/img/title.png")
+            div.title-info
+                div.title-info__view
+                    i.fas.fa-eye
+                    span 213,4892,16
+                div.title-info__comment
+                    i.fas.fa-comment
+                    span 531,82
+            button(name="ViewBtn" onclick="location.href='https://youtu.be/11cta61wi0g';") View Now
     div.video-grid
         each video in videos
             +video(video)
