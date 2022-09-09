@@ -19,7 +19,7 @@
 @import "./screens/edit-profile.scss";
 @import "./screens/upload.scss";
 @import "./screens/watch.scss";
-@import "./screens/home.scss";
+@import "./screens/about.scss";
 
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap');
@@ -32,6 +32,7 @@
 }
 
 // Defaults
+
 a {
   color: inherit;
   text-decoration: none;
@@ -41,7 +42,11 @@ body {
   font-family: 'Pretendard-Regular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   // background-color: $bg;
-  background-image: url("/src/client/scss/img/bg.png");
+  // background-image: url("/src/client/scss/img/bg.png");
+  // background-image: url("/src/client/scss/img/bg-crop.png");
+  background-image: url("/src/client/scss/img/bg-gif2.gif");
+  // background-image: url("https://64.media.tumblr.com/8cd66cc3a6899569e00e1f97f19a2283/24d4764c84ad722e-33/s540x810/3c086cd1976b10ced6c548b56a85b605aab0fb39.gifv");
+  // https://64.media.tumblr.com/9e06c75f584b76471cfb6917477b7eb6/24d4764c84ad722e-75/s540x810/1c993de649a0d1623446b09851a71a125cfe4413.gifv
   background-repeat: no-repeat;
   background-size: cover;
   color: white;

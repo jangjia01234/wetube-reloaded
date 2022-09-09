@@ -162,3 +162,16 @@ export const removeComment = async (req, res) => {
 
   return res.sendStatus(201);
 };
+
+export const about = async (req, res) => {
+  const { keyword } = req.query;
+  let videos = [];
+  if (keyword) {
+    videos = await Video.find({
+      title: {
+        $regex: new RegExp(keyword, "i"),
+      },
+    }).populate("owner");
+  }
+  return res.render("about", { pageTitle: "about", videos });
+};
