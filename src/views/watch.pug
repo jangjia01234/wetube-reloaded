@@ -21,26 +21,47 @@ block content
                     i.fas.fa-expand
     div.video__data
         p.video__title=video.title
-        small.video__owner Uploaded by 
-            a(href=`/users/${video.owner._id}`)=video.owner.name
-        small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
-        if String(video.owner._id) === String(loggedInUser._id)
-            a(href=`${video.id}/edit`) Edit Video &rarr;
-            br
-            a(href=`${video.id}/delete`) Delete Video &rarr;
+        div
+            div.video__title-upProfile
+                div.video__title-upProfile-left
+                    a(href=`/users/${loggedInUser._id}`)
+                                    if loggedInUser.avatarUrl === ""
+                                        span 😀
+                                    else
+                                        img.uploader__avatar(src="/" + loggedInUser.avatarUrl)
+                    div.video__title-upProfile-info
+                            small.video__owner
+                                a(href=`/users/${video.owner._id}`)=video.owner.name
+                            small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+                div.video__title-upProfile-edit
+                    if String(video.owner._id) === String(loggedInUser._id)
+                        a(href=`${video.id}/edit`) Edit Video
+                        //- 오른쪽 화살표는 &rarr;
+                        br
+                        a(href=`${video.id}/delete`) Delete Video
     if loggedIn
         div.video__add-comments
             form.video__comment-form#commentForm
                 textarea(cols="30", rows="10", placeholder="Write a nice commment...")
-                button Add Comment
+                button Add comment
     div.video__comments
         ul
             each comment in video.comments.reverse()
                 li.video__comment#videoComment(data-id=comment.id)
-                    i.fas.fa-comment
-                    span #{comment.text}
-                    if String(comment.owner._id) === String(loggedInUser._id)
-                        span.video__comment__delete-btn  ❌
+                    a(href=`/users/${loggedInUser._id}`)
+                                    if loggedInUser.avatarUrl === ""
+                                        span 😀
+                                    else
+                                        img.comment__avatar(src="/" + loggedInUser.avatarUrl)
+                    div.video__comment-content
+                        div.video__comment-content-uploader
+                            span.video__owner
+                                a(href=`/users/${video.owner._id}`)=video.owner.name
+                            span.comment__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+                        div.video__comment-content-detail
+                            span #{comment.text}
+                            if String(comment.owner._id) === String(loggedInUser._id)
+                                span.video__comment__delete-btn X
 
 block scripts
     script(src="/static/js/videoPlayer.js")

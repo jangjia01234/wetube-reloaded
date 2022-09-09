@@ -3,8 +3,14 @@
     display: flex;
     flex-direction: column;
     .video__title {
-      font-size: 26px;
-      margin-bottom: 5px;
+      margin-bottom: 20px;
+      background: none;
+      font-style: none;
+      font-size: 20px;
+      text-align: left;
+      padding: 20px;
+      border-radius: 0;
+      border-bottom: 0.2px solid white;
     }
     .video__createdAt {
       font-size: 12px;
@@ -17,19 +23,113 @@
         text-decoration: underline;
       }
     }
+    .video__title-upProfile {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+    .video__title-upProfile-left {
+      display: flex;
+    }
+    .uploader__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .video__title-upProfile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }  
+    .video__title-upProfile-edit {
+      color: rgb(48, 48, 48);
+    }
   }
+
+  .video__add-comments form {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    max-width: none;
+    width: 100%;
+    height: 5vh;
+  }
+
+  .video__comment-form {
+    display: flex;
+  }
+
+  .video__comment-form textarea {
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.485);
+    color: $pink;
+    width: 100%;
+  }
+
+  .video__comment-form button {
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    background-color: $pink;
+    border: 2px solid $pink;
+    color: black;
+    padding: 10px;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    cursor: pointer;
+  }
+  
   .video__comments {
     display: flex;
     flex-direction: column;
     max-width: 320px;
     width: 100%;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 60px;
+    padding: 0;
+    max-width: none;
     .video__comment {
       padding: 10px;
-      border-radius: 9999px;
-      background-color: white;
-      color: black;
       margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .comment__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .video__comment-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .video__comment__delete-btn {
+        font-size: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    }
+    .video__comment-content-detail {
+      margin-top: 8px;
+    }
+    .video__owner {
+      margin-right: 10px;
+    }
+    .comment__createdAt {
+      font-size: 10px;
     }
   }  
+
+  
+
+
+  
