@@ -1,5 +1,13 @@
+import { findConfigUpwards } from "@babel/core/lib/config/files";
+
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
+const videoComment = document.getElementById("videoComment");
+const commentDeleteBtnAll = document.querySelectorAll(
+  ".video__comment__delete-btn"
+);
+
+console.log(commentDeleteBtnAll)
 
 const addComment = (text, id) => {
   const videoComments = document.querySelector(".video__comments ul");
@@ -12,6 +20,7 @@ const addComment = (text, id) => {
   span.innerText = ` ${text}`;
   const span2 = document.createElement("span");
   span2.innerText = " ❌";
+  span2.addEventListener("click", delComment);
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(span2);
@@ -41,6 +50,22 @@ const handleSubmit = async (event) => {
   }
 };
 
+const delComment = async (event) => {
+  const parent = event.target.parentElement;
+  const commentId = parent.dataset.id;
+  await fetch(`/api/comments/${commentId}`, {
+    method: "DELETE",
+  });
+  parent.remove();
+};
+
 if (form) {
   form.addEventListener("submit", handleSubmit);
 };
+
+if (videoComment) {
+  commentDeleteBtnAll.forEach((btn) =>
+    btn.addEventListener("click", delComment)
+  );
+}
+
