@@ -21,9 +21,10 @@
         font-size: 12px;
     }
     .title-text {
-        padding: 140px;
-        font-size: 25px;
-        font-family: 'Shrikhand', cursive;
+        padding: 200px 80px;
+        font-size: 30px;
+        font-family: 'LeferiPoint-BlackObliqueA';
+        letter-spacing: 20px;
     }
     .title-info {
         display: flex;
@@ -38,7 +39,7 @@
         margin-right: 7px;
     }
     .main__title button {
-        margin: 50px 0;
+        margin: 50px 0 70px 0;
         -webkit-appearance: none;
         background: transparent;
         border: none;
