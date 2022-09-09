@@ -22,8 +22,8 @@ header {
     }
   }
   .header__btn {
-    background-color: white;
-    color: $bg;
+    background-color: $bg;
+    color: $pink;
     padding: 5px 10px;
     border-radius: 5px;
   }
@@ -31,5 +31,8 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+  }
+  .header__logo__img {
+    width: 150px;
   }
 }
