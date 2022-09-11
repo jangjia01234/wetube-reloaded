@@ -60,22 +60,27 @@ export const postUpload = async (req, res) => {
   const {
     user: {_id}
   } = req.session;
-  const { path: fileUrl } = req.file;
+  const { video, thumb } = req.files;
+  console.log(video, thumb);
   const { title, description, hashtags } = req.body;
   try {
     const newVideo = await Video.create({
       title,
       description,
-      fileUrl,
+      fileUrl: video,
+      thumbUrl: thumb[0].path.replace(/[\\]/g, "/"),
       owner:_id,
       hashtags: Video.formatHashtags(hashtags),
     });
+
+    // 썸네읿 반영 안됨. 오류 수정 필요.
+
     const user = await User.findById(_id);
     user.videos.push(newVideo._id);
     user.save();
+
     return res.redirect("/");
   } catch (error) {
-    console.log(error);
     return res.status(400).render("upload", {
       pageTitle: "Upload Video",
       errorMessage: error._message,

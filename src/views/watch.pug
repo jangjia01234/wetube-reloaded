@@ -55,7 +55,7 @@ block content
                                         img.comment__avatar(src="/" + loggedInUser.avatarUrl)
                     div.video__comment-content
                         div.video__comment-content-uploader
-                            span.video__owner
+                            span.comment__owner
                                 a(href=`/users/${comment.owner._id}`)=comment.owner.name
                             span.comment__createdAt=new Date(comment.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
                         div.video__comment-content-detail

@@ -1,1 +1,13 @@
-// 추후 추가 예정 (아마 #14인듯)
+.upload__container {
+    width: 100%;
+    .upload__video {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      video {
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  }
