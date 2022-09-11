@@ -74,8 +74,6 @@ export const postUpload = async (req, res) => {
       hashtags: Video.formatHashtags(hashtags),
     });
 
-    // 썸네읿 반영 안됨. 오류 수정 필요.
-
     const user = await User.findById(_id);
     user.videos.push(newVideo._id);
     user.save();
