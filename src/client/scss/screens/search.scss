@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: 100vh;  
 }
 
 .search__form {
@@ -17,7 +17,6 @@ body {
     font-size: 16px;
     color: white;
     width: 90%;
-
   }
   button {
     all: unset;
@@ -32,13 +31,18 @@ body {
   }
 }
 
+.search-middle {
+  height: 80vh;
+}
+
 .empty__message {
+  padding: 40px;
   font-size: 20px;
   width: 22ch;
   animation: typing 2s steps(22), blink .5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid;
+  // border-right: 3px solid;
   font-family: 'HBIOS-SYS';
   font-size: 1.5em;
 }

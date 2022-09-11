@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+    color: white;
   }
 
 .main {
@@ -48,9 +48,10 @@ body {
         -webkit-appearance: none;
         background: transparent;
         border: none;
-        background-color: white;
-        color: black;
+        background-color: black;
+        color: $pink;
         padding: 20px;
+        border: 1px solid $pink;
         border-radius: 10px;
         font-size: 14px;
         font-weight: 600;
@@ -122,5 +123,8 @@ body {
             transform: translate(-22px,5px) skew(21deg); 
         }
     }
+}
 
+.video-grid {
+    height: 10vh;
 }

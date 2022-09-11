@@ -29,12 +29,13 @@ input[type="submit"],
 .social__btn {
   border-radius: 5px;
   padding: 12px 20px;
-  background-color: white !important;
-  color: rgba($color: $red, $alpha: 1) !important;
+  background-color: black !important;
+  color: rgba($color: $pink, $alpha: 1) !important;
   text-align: center !important;
   cursor: pointer;
   display: block;
   border: none;
+  border: 1px solid $pink;
   &:focus {
     outline: none;
   }
