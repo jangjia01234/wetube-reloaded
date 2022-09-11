@@ -24,11 +24,11 @@ block content
         div
             div.video__title-upProfile
                 div.video__title-upProfile-left
-                    a(href=`/users/${loggedInUser._id}`)
-                                    if loggedInUser.avatarUrl === ""
+                    a(href=`/users/${video.owner._id}`)
+                                    if video.owner.avatarUrl === ""
                                         span 😀
                                     else
-                                        img.uploader__avatar(src="/" + loggedInUser.avatarUrl)
+                                        img.uploader__avatar(src="/" + video.owner.avatarUrl)
                     div.video__title-upProfile-info
                             small.video__owner
                                 a(href=`/users/${video.owner._id}`)=video.owner.name
@@ -46,13 +46,13 @@ block content
                 button Add comment
     div.video__comments
         ul
-            each comment in video.comments.reverse()
+            each comment in comments.reverse()
                 li.video__comment#videoComment(data-id=comment.id)
-                    a(href=`/users/${loggedInUser._id}`)
-                                    if loggedInUser.avatarUrl === ""
+                    a(href=`/users/${comment.owner.id}`)
+                                    if comment.owner.avatarUrl === ""
                                         span 😀
                                     else
-                                        img.comment__avatar(src="/" + loggedInUser.avatarUrl)
+                                        img.comment__avatar(src="/" + comment.owner.avatarUrl)
                     div.video__comment-content
                         div.video__comment-content-uploader
                             span.comment__owner
