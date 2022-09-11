@@ -4,6 +4,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $pink;
   .header__logo {
     color: $pink;
     font-size: 38px;
@@ -29,6 +30,9 @@ header {
   .header__left {
     display: flex;
   }
+  // .header-home {
+  //   color: $pink;
+  // }
   .header__btn {
     // background-color: $bg;
     color: $pink;

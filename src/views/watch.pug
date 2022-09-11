@@ -32,7 +32,8 @@ block content
                     div.video__title-upProfile-info
                             small.video__owner
                                 a(href=`/users/${video.owner._id}`)=video.owner.name
-                            small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+                            span 구독자 72.8만명
+                            //- small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
                 div.video__title-upProfile-edit
                     if String(video.owner._id) === String(loggedInUser._id)
                         a(href=`${video.id}/edit`) Edit Video

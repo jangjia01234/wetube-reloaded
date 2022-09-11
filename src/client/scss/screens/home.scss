@@ -4,6 +4,7 @@ body {
 
 .main {
     width: 80vw;
+    margin: 0 auto;
     .main__uploader {
         display: flex;
     }
@@ -124,8 +125,4 @@ body {
             transform: translate(-22px,5px) skew(21deg); 
         }
     }
-}
-
-.video-grid {
-    height: 10vh;
 }
