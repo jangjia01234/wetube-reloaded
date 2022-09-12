@@ -28,7 +28,7 @@ block content
                                     if video.owner.avatarUrl === ""
                                         span 😀
                                     else
-                                        img.uploader__avatar(src="/" + video.owner.avatarUrl)
+                                        img.uploader__avatar(src=video.owner.avatarUrl)
                     div.video__title-upProfile-info
                             small.video__owner
                                 a(href=`/users/${video.owner._id}`)=video.owner.name
