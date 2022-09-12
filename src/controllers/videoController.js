@@ -57,42 +57,12 @@ export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
 
-// export const postUpload = async (req, res) => {
-//   const {
-//     user: {_id}
-//   } = req.session;
-//   const { video, thumb } = req.files;
-//   console.log(video, thumb);
-//   const { title, description, hashtags } = req.body;
-//   const isHeroku = process.env.NODE_ENV === "production";
-//   try {
-//     const newVideo = await Video.create({
-//       title,
-//       description,
-//       fileUrl: isHeroku ? video[0].location : video[0].path,
-//       thumbUrl: isHeroku ? thumb[0].location : thumb[0].path,
-//       owner: _id,
-//       hashtags: Video.formatHashtags(hashtags),
-//     });
-
-//     const user = await User.findById(_id);
-//     user.videos.push(newVideo._id);
-//     user.save();
-
-//     return res.redirect("/");
-//   } catch (error) {
-//     return res.status(400).render("upload", {
-//       pageTitle: "Upload Video",
-//       errorMessage: error._message,
-//     });
-//   }
-// };
-
 export const postUpload = async (req, res) => {
   const {
-    user: { _id },
+    user: {_id}
   } = req.session;
   const { video, thumb } = req.files;
+  console.log(video, thumb);
   const { title, description, hashtags } = req.body;
   const isHeroku = process.env.NODE_ENV === "production";
   try {
@@ -104,9 +74,11 @@ export const postUpload = async (req, res) => {
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
+
     const user = await User.findById(_id);
     user.videos.push(newVideo._id);
     user.save();
+
     return res.redirect("/");
   } catch (error) {
     return res.status(400).render("upload", {
@@ -115,6 +87,7 @@ export const postUpload = async (req, res) => {
     });
   }
 };
+
 
 export const deleteVideo = async (req, res) => {
   const { id } = req.params;
