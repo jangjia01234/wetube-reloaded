@@ -1,22 +1,13 @@
 import multer from "multer";
 import multerS3 from "multer-s3";
-import { S3Client } from "@aws-sdk/client-s3";
-// import aws from "aws-sdk";
+import aws from "aws-sdk";
 
-// const s3 = new aws.S3({
-//   credentials: {
-//     accessKeyId: process.env.AWS_ID,
-//     secretAccessKey: process.env.AWS_SECRET
-//   }
-// })
-
-const s3 = new S3Client({
-  region: "ap-northeast-2",
+const s3 = new aws.S3({
   credentials: {
-  accessKeyId: process.env.AWS_ID,
-  secretAccessKey: process.env.AWS_SECRET,
-  },
-  });
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET
+  }
+})
 
 const isHeroku = process.env.NOED_ENV === "production";
 
