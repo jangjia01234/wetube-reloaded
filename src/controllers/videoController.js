@@ -62,7 +62,7 @@ export const postUpload = async (req, res) => {
     user: {_id}
   } = req.session;
   const { video, thumb } = req.files;
-  console.log(video, thumb);
+  console.log(video[0]);
   const { title, description, hashtags } = req.body;
   const isHeroku = process.env.NODE_ENV === "production";
   try {
