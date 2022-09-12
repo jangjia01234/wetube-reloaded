@@ -9,21 +9,43 @@ const commentDeleteBtnAll = document.querySelectorAll(
 
 console.log(commentDeleteBtnAll)
 
-const addComment = (text, id) => {
+const addComment = (text, id, owner, createdAt) => {
   const videoComments = document.querySelector(".video__comments ul");
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "video__comment";
-  const icon = document.createElement("i");
-  icon.className = "fas fa-comment";
-  const span = document.createElement("span");
-  span.innerText = ` ${text}`;
-  const span2 = document.createElement("span");
-  span2.innerText = " ❌";
-  span2.addEventListener("click", delComment);
-  newComment.appendChild(icon);
-  newComment.appendChild(span);
-  newComment.appendChild(span2);
+  const avatarContainer = document.createElement("a");
+  avatarContainer.href = `${owner.id}`;
+  const avatarImg = document.createElement("img");
+  avatarImg.className = "comment__avatar";
+  avatarContainer.appendChild(avatarImg);
+  newComment.appendChild(avatarContainer);
+  const content = document.createElement("div");
+  content.className = "video__comment-content";
+  const uploader = document.createElement("div");
+  content.className = "video__comment-content-uploader";
+  const ownerName = document.createElement("span");
+  content.className = "comment__owner";
+  const ownerLink = document.createElement("a");
+  ownerLink.innerText = `${owner.name}`;
+  ownerName.appendChild(ownerLink);
+  const createdTime = document.createElement("span");
+  createdTime.className = "comment__createdAt";
+  createdTime.innerText = `${createdAt.getFullYear()}. ${createdAt.getMonth()}. ${createdAt.getDate()}`;
+  uploader.appendChild(ownerName);
+  uploader.appendChild(createdTime);
+  content.appendChild(uploader);
+  const detail = document.createElement("div");
+  detail.className = "video__comment-content-detail";
+  const commentText = document.createElement("span");
+  commentText.innerText = ` ${text}`;
+  const deleteBtn = document.createElement("span");
+  deleteBtn.className = "video__comment__delete-btn";
+  deleteBtn.innerText = "X";
+  deleteBtn.addEventListener("click", delComment);
+  detail.appendChild(commentText);
+  detail.appendChild(deleteBtn);
+  content.appendChild(detail);
   videoComments.prepend(newComment);
 };
 
@@ -45,8 +67,8 @@ const handleSubmit = async (event) => {
   });
   if (response.status === 201) {
     textarea.value = "";
-    const { newCommentId } = await response.json();
-    addComment(text, newCommentId);
+    const { newCommentId, owner, createdAt } = await response.json();
+    addComment(text, newCommentId, owner, new Date(createdAt));
   }
 };
 
