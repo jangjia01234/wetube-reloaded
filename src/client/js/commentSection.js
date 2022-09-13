@@ -15,8 +15,9 @@ const addComment = (text, id, owner, createdAt) => {
   newComment.dataset.id = id;
   newComment.className = "video__comment";
   const avatarContainer = document.createElement("a");
-  avatarContainer.href = `${owner.id}`;
+  avatarContainer.href = `/users/${owner.id}`;
   const avatarImg = document.createElement("img");
+  avatarImg.src = owner.avatarUrl;
   avatarImg.className = "comment__avatar";
   avatarContainer.appendChild(avatarImg);
   newComment.appendChild(avatarContainer);
@@ -27,11 +28,12 @@ const addComment = (text, id, owner, createdAt) => {
   const ownerName = document.createElement("span");
   content.className = "comment__owner";
   const ownerLink = document.createElement("a");
+  ownerLink.href = `/users/${owner.id}`;
   ownerLink.innerText = `${owner.name}`;
   ownerName.appendChild(ownerLink);
   const createdTime = document.createElement("span");
   createdTime.className = "comment__createdAt";
-  createdTime.innerText = `${createdAt.getFullYear()}. ${createdAt.getMonth()}. ${createdAt.getDate()}`;
+  createdTime.innerText = `${createdAt.getFullYear()}. ${createdAt.getMonth()+1}. ${createdAt.getDate()}`;
   uploader.appendChild(ownerName);
   uploader.appendChild(createdTime);
   content.appendChild(uploader);
@@ -41,11 +43,12 @@ const addComment = (text, id, owner, createdAt) => {
   commentText.innerText = ` ${text}`;
   const deleteBtn = document.createElement("span");
   deleteBtn.className = "video__comment__delete-btn";
-  deleteBtn.innerText = "X";
+  deleteBtn.innerText = " X ";
   deleteBtn.addEventListener("click", delComment);
   detail.appendChild(commentText);
   detail.appendChild(deleteBtn);
   content.appendChild(detail);
+  newComment.appendChild(content);
   videoComments.prepend(newComment);
 };
 
@@ -73,7 +76,7 @@ const handleSubmit = async (event) => {
 };
 
 const delComment = async (event) => {
-  const parent = event.target.parentElement;
+  const parent = event.target.closest(".video__comment");
   const commentId = parent.dataset.id;
   await fetch(`/api/comments/${commentId}`, {
     method: "DELETE",

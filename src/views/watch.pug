@@ -58,7 +58,7 @@ block content
                         div.video__comment-content-uploader
                             span.comment__owner
                                 a(href=`/users/${comment.owner._id}`)=comment.owner.name
-                            span.comment__createdAt=new Date(comment.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+                            span.comment__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
                         div.video__comment-content-detail
                             span #{comment.text}
                             if String(comment.owner._id) === String(loggedInUser._id)
